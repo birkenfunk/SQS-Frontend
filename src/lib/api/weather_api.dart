@@ -1,17 +1,35 @@
+import 'package:dio/dio.dart';
 import 'package:src/api/weather_api_i.dart';
 import 'package:src/entities/weather_dto.dart';
 
 class WeatherApi implements WeatherApiI{
+
+  final Dio _dio;
+
+  WeatherApi(this._dio);
+
   @override
-  Future<WeatherDto> getWeather(String location) {
-    // TODO: implement getWeather
-    throw UnimplementedError();
+  Future<WeatherDto?> getWeather(String location) async{
+    Response response;
+    try {
+      response = await _dio.get('/weather/$location');
+    } on DioExceptionType catch (_) {
+      return null;
+    }
+    WeatherDto? weather = WeatherDto.fromJson(response.data);
+    return weather;
   }
 
   @override
-  Future<bool> isHealthy() {
-    // TODO: implement isHealthy
-    throw UnimplementedError();
+  Future<bool?> isHealthy() async {
+    try {
+      Response response = await _dio.get('/health');
+      return response.statusCode == 200;
+    } on DioExceptionType catch (_) {
+      return false;
+    }
   }
 
+  // for testing purposes only
+  Dio get dio => _dio;
 }
