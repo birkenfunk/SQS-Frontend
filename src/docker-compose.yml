@@ -13,7 +13,7 @@ services:
     image: codeberg.org/birkenfunk/sqs-external-api:latest
     restart: always
   api:
-    image: codeberg.org/birkenfunk/sqs/backend:0.0.1
+    image: codeberg.org/birkenfunk/sqs/backend:0.1.1
     ports:
       - '4000:4000'
     environment:
