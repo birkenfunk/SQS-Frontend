@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:src/api/weather_api_i.dart';
 import 'package:src/entities/weather_dto.dart';
+import 'package:src/services/api/weather_api_i.dart';
 
 class WeatherApi implements WeatherApiI{
 

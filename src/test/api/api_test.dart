@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:src/api/weather_api.dart';
 import 'package:src/entities/weather_dto.dart';
+import 'package:src/services/api/weather_api.dart';
 
 import '../mocks/mock.mocks.dart';
 
