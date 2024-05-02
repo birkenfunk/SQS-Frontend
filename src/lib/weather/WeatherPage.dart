@@ -7,10 +7,10 @@ class WeatherPage extends StatefulWidget {
   const WeatherPage({super.key});
 
   @override
-  State<StatefulWidget> createState() => _SWeatherPageState();
+  State<StatefulWidget> createState() => _WeatherPageState();
 }
 
-class _SWeatherPageState extends State<WeatherPage> {
+class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
     return const StartScaffold(
