@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:src/entities/weather_dto.dart';
 import 'package:src/services/api/weather_api_i.dart';
 import 'package:src/services/providers/ApiProvider.dart';
+import 'package:src/services/providers/WeatherProvider.dart';
 
 class SelectCityForm extends StatefulWidget {
   const SelectCityForm({super.key});
@@ -15,8 +17,9 @@ class _SelectCityFormState extends State<SelectCityForm> {
 
   String _city = '';
 
-  changeCity(ApiProvider apiProvider){
-
+  changeCity(ApiProvider apiProvider, WeatherProvider weatherProvider) async{
+    WeatherDto? weatherDto = await apiProvider.api?.getWeather(_city);
+    weatherProvider.weatherDto = weatherDto;
   }
 
   @override
@@ -50,7 +53,7 @@ class _SelectCityFormState extends State<SelectCityForm> {
                   onPressed: () {
                     // Validate returns true if the form is valid, or false otherwise.
                     if (_formKey.currentState!.validate()) {
-                      changeCity(context.read<ApiProvider>());
+                      changeCity(context.read<ApiProvider>(), context.read<WeatherProvider>());
                     }
                   },
                   child: const Text('Get Weather'),

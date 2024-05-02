@@ -70,4 +70,9 @@ class WeatherDto{
       _windSpeed.hashCode ^
       _weather.hashCode ^
       _date.hashCode;
+
+  @override
+  String toString() {
+    return 'WeatherDto{_location: $_location, _temperature: $_temperature, _humidity: $_humidity, _sunHours: $_sunHours, _windSpeed: $_windSpeed, _weather: $_weather, _date: $_date}';
+  }
 }
