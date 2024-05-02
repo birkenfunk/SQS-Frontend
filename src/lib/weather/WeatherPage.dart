@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:src/compontents/StartScafold.dart';
-import 'package:src/compontents/UserOptions.dart';
-import 'package:src/server/SelectCityForm.dart';
+import 'package:src/components/StartScafold.dart';
+import 'package:src/components/UserOptions.dart';
+import 'package:src/weather/SelectCityForm.dart';
 
 class WeatherPage extends StatefulWidget {
   const WeatherPage({super.key});

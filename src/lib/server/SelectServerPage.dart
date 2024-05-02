@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:src/compontents/StartScafold.dart';
-import 'package:src/compontents/UserOptions.dart';
-import 'package:src/server/SelectCityForm.dart';
-import 'package:src/weather/SelectServerForm.dart';
+import 'package:src/components/StartScafold.dart';
+import 'package:src/server/SelectServerForm.dart';
 class SelectServerPage extends StatefulWidget {
   const SelectServerPage({super.key});
 

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:src/server/SelectCityForm.dart';
-import 'package:src/server/WeatherPage.dart';
 import 'package:src/services/providers/ApiProvider.dart';
-import 'package:src/weather/SelectServerPage.dart';
+import 'package:src/server/SelectServerPage.dart';
+import 'package:src/weather/WeatherPage.dart';
 
 void main() {
   runApp(const MyApp());
