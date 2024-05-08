@@ -35,7 +35,11 @@ class _WeatherPageState extends State<WeatherPage> {
         child: Column(
           children: [
             const SelectCityForm(),
-            weatherDisplay
+            SizedBox(
+              height: MediaQuery.of(context).size.height-200,
+              width: 400,
+              child: weatherDisplay,
+            )
           ],
         )
     );

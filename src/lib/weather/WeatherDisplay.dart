@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:src/components/StartScafold.dart';
 import 'package:src/entities/weather_dto.dart';
 import 'package:src/services/providers/WeatherProvider.dart';
 
-class WeatherDisplay extends StatefulWidget{
+class WeatherDisplay extends StatefulWidget {
   const WeatherDisplay({super.key});
 
   @override
   State<StatefulWidget> createState() => _WeatherDisplayState();
-
 }
 
 class _WeatherDisplayState extends State<WeatherDisplay> {
@@ -18,52 +16,50 @@ class _WeatherDisplayState extends State<WeatherDisplay> {
     WeatherDto? weatherDto = context.watch<WeatherProvider>().weatherDto;
     weatherDto ??= WeatherDto("", "", "", 0, "", "", "");
 
-    String toDisplay = weatherDto.toString();
-
-    return Column(
+    return GridView.count(
+      crossAxisCount: 2,
+      childAspectRatio: 6,
       children: [
-        Row(
-          children: [
-            const Text("Location:"),
-            Text(weatherDto.location)
-          ],
+        const Center(
+          child: Text("Location:"),
         ),
-        Row(
-          children: [
-            const Text("Date:"),
-            Text(weatherDto.date)
-          ],
+        Center(
+          child: Text(weatherDto.location),
         ),
-        Row(
-          children: [
-            const Text("Weather:"),
-            Text(weatherDto.weather)
-          ],
+        const Center(
+          child: Text("Date:"),
         ),
-        Row(
-          children: [
-            const Text("Temperature:"),
-            Text(weatherDto.temperature)
-          ],
+        Center(
+          child: Text(weatherDto.date),
         ),
-        Row(
-          children: [
-            const Text("Windspeed:"),
-            Text(weatherDto.windSpeed)
-          ],
+        const Center(
+          child: Text("Weather:"),
         ),
-        Row(
-          children: [
-            const Text("Humidity:"),
-            Text(weatherDto.humidity)
-          ],
+        Center(
+          child: Text(weatherDto.weather),
         ),
-        Row(
-          children: [
-            const Text("Sun hours:"),
-            Text(weatherDto.sunHours.toString())
-          ],
+        const Center(
+          child: Text("Temperature:"),
         ),
+        Center(
+          child: Text(weatherDto.temperature),
+        ),
+        const Center(
+          child: Text("Windspeed:"),
+        ),
+        Center(
+          child: Text(weatherDto.windSpeed),
+        ),
+        const Center(
+          child: Text("Humidity:"),
+        ),
+        Center(
+          child: Text(weatherDto.humidity),
+        ),
+        const Center(
+          child: Text("Sun hours:"),
+        ),
+        Center(child: Text(weatherDto.sunHours.toString())),
       ],
     );
   }
