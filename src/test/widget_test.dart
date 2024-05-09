@@ -7,24 +7,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 
 import 'package:src/main.dart';
+import 'package:src/services/api/weather_api_i.dart';
+import 'package:src/services/providers/ApiProvider.dart';
+import 'package:src/services/providers/WeatherProvider.dart';
 
-void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
-}
+@GenerateNiceMocks([MockSpec<NavigatorObserver>(), MockSpec<ApiProvider>(), MockSpec<WeatherApiI>(), MockSpec<WeatherProvider>()])
+void main() {}
