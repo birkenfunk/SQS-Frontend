@@ -38,97 +38,99 @@ class _SelectServerFormState extends State<SelectServerForm> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        //half of page
-        width: MediaQuery.of(context).size.width * 0.5,
-        child: Form(
-            key: _formKey,
-            child: Column(
+    double width = MediaQuery.of(context).size.width - 200;
+    if (width < 0 || width > 400) {
+      width = 400;
+    }
+    return Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 80,
-                      child: DropdownButtonFormField(
-                        alignment: Alignment.centerLeft,
-                          items: const [
-                            DropdownMenuItem(
-                              value: false,
-                              child: Text('http'),
-                            ),
-                            DropdownMenuItem(
-                              value: true,
-                              child: Text('https'),
-                            ),
-                          ],
-                          value: _useHttps,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              _useHttps = value!;
-                            });
-                          }),
-                    ),
-                    const Text('://'),
-                    SizedBox(
-                      width: 200,
-                      child: TextFormField(
-                        initialValue: _serverHost,
-                        decoration: const InputDecoration(
-                          hintText: 'Enter host',
+                SizedBox(
+                  width: 80,
+                  child: DropdownButtonFormField(
+                      alignment: Alignment.centerLeft,
+                      items: const [
+                        DropdownMenuItem(
+                          value: false,
+                          child: Text('http'),
                         ),
-                        validator: (String? value) {
-                          //check if url is valid
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter a valid url';
-                          }
-                          return null;
-                        },
-                        onChanged: (String value) {
-                          setState(() {
-                            _serverHost = value;
-                          });
-                        },
-                      ),
-                    ),
-                    const Text(':'),
-                    SizedBox(
-                      width: 100,
-                      child: TextFormField(
-                        initialValue: _serverPort.toString(),
-                        decoration: const InputDecoration(
-                          hintText: 'Enter port',
+                        DropdownMenuItem(
+                          value: true,
+                          child: Text('https'),
                         ),
-                        validator: (String? value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter some text';
-                          }
-                          return null;
-                        },
-                        onChanged: (String value) {
-                          setState(() {
-                            _serverPort = int.parse(value);
-                          });
-                        },
-                      ),
+                      ],
+                      value: _useHttps,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          _useHttps = value!;
+                        });
+                      }),
+                ),
+                const Text('://'),
+                SizedBox(
+                  width: width,
+                  child: TextFormField(
+                    initialValue: _serverHost,
+                    decoration: const InputDecoration(
+                      hintText: 'Enter host',
                     ),
-                  ],
+                    validator: (String? value) {
+                      //check if url is valid
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter a valid url';
+                      }
+                      return null;
+                    },
+                    onChanged: (String value) {
+                      setState(() {
+                        _serverHost = value;
+                      });
+                    },
+                  ),
                 ),
-                const SizedBox(height: 10),
-                Text(
-                  _error,
-                  style: const TextStyle(color: Colors.red),
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    // Validate returns true if the form is valid, or false otherwise.
-                    if (_formKey.currentState!.validate()) {
-                      next(context.read<ApiProvider>());
-                    }
-                  },
-                  child: const Text('Next'),
+                const Text(':'),
+                SizedBox(
+                  width: 60,
+                  child: TextFormField(
+                    initialValue: _serverPort.toString(),
+                    decoration: const InputDecoration(
+                      hintText: 'Enter port',
+                    ),
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
+                    onChanged: (String value) {
+                      setState(() {
+                        _serverPort = int.parse(value);
+                      });
+                    },
+                  ),
                 ),
               ],
-            )));
+            ),
+            const SizedBox(height: 10),
+            Text(
+              _error,
+              style: const TextStyle(color: Colors.red),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                // Validate returns true if the form is valid, or false otherwise.
+                if (_formKey.currentState!.validate()) {
+                  next(context.read<ApiProvider>());
+                }
+              },
+              child: const Text('Next'),
+            ),
+          ],
+        ));
   }
 }

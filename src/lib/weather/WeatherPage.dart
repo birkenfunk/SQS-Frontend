@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:src/components/StartScafold.dart';
@@ -27,6 +29,10 @@ class _WeatherPageState extends State<WeatherPage> {
       weatherDisplay = const WeatherDisplay();
     }
 
+    Size size = MediaQuery.of(context).size;
+    double height = size.height;
+
+
     return StartScaffold(
         title: "Weather Page",
         actions: const [
@@ -36,7 +42,7 @@ class _WeatherPageState extends State<WeatherPage> {
           children: [
             const SelectCityForm(),
             SizedBox(
-              height: MediaQuery.of(context).size.height-200,
+              height: height-220,
               width: 400,
               child: weatherDisplay,
             )
