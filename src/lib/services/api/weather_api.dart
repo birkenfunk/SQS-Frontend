@@ -5,14 +5,13 @@ import 'package:dio/dio.dart';
 import 'package:src/entities/weather_dto.dart';
 import 'package:src/services/api/weather_api_i.dart';
 
-class WeatherApi implements WeatherApiI{
-
+class WeatherApi implements WeatherApiI {
   final Dio _dio;
 
   WeatherApi(this._dio);
 
   @override
-  Future<WeatherDto?> getWeather(String location) async{
+  Future<WeatherDto?> getWeather(String location) async {
     Response response;
     try {
       response = await _dio.get('/weather/$location');
@@ -35,4 +34,35 @@ class WeatherApi implements WeatherApiI{
 
   // for testing purposes only
   Dio get dio => _dio;
+}
+
+class WeatherFactory {
+  static bool _isUnderTest = false;
+  static WeatherApiI? _testApi;
+
+  static WeatherApiI create(String host, int port, bool useHttps) {
+    if (_isUnderTest) {
+      if (_testApi != null) {
+        return _testApi as WeatherApiI;
+      }
+      throw StateError('Test API not set');
+    }
+    String protocol = useHttps ? 'https' : 'http';
+    String url = '$protocol://$host:$port';
+    BaseOptions options = BaseOptions(baseUrl: url);
+    Dio dio = Dio(options);
+    return WeatherApi(dio);
+  }
+
+  // for testing purposes only
+  static void setTestApi(WeatherApiI api) {
+    _isUnderTest = true;
+    _testApi = api;
+  }
+
+  // for testing purposes only
+  static void reset() {
+    _isUnderTest = false;
+    _testApi = null;
+  }
 }

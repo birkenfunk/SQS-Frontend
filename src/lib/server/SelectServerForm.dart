@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:src/services/api/weather_api.dart';
 import 'package:src/services/api/weather_api_i.dart';
 import 'package:src/services/providers/ApiProvider.dart';
 
@@ -19,7 +20,7 @@ class _SelectServerFormState extends State<SelectServerForm> {
   int _serverPort = 4000;
 
   next(ApiProvider apiProvider) async {
-    WeatherApiI api = WeatherApiI.create(_serverHost, _serverPort, _useHttps);
+    WeatherApiI api = WeatherFactory.create(_serverHost, _serverPort, _useHttps);
 
     bool? isValid = await api.isHealthy();
     if (isValid == null || !isValid) {
@@ -50,7 +51,7 @@ class _SelectServerFormState extends State<SelectServerForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: 80,
+                  width: 105,
                   child: DropdownButtonFormField(
                       alignment: Alignment.centerLeft,
                       items: const [
@@ -122,6 +123,7 @@ class _SelectServerFormState extends State<SelectServerForm> {
             ),
             const SizedBox(height: 10),
             ElevatedButton(
+              key: const Key('nextButton_serverForm'),
               onPressed: () {
                 // Validate returns true if the form is valid, or false otherwise.
                 if (_formKey.currentState!.validate()) {
