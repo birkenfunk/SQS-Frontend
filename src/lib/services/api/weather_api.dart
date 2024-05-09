@@ -1,6 +1,3 @@
-import 'dart:io';
-import 'dart:math';
-
 import 'package:dio/dio.dart';
 import 'package:src/entities/weather_dto.dart';
 import 'package:src/services/api/weather_api_i.dart';
@@ -27,7 +24,7 @@ class WeatherApi implements WeatherApiI {
     try {
       Response response = await _dio.get('/health');
       return response.statusCode == 200;
-    } on DioException catch (_) {
+    } catch (_) {
       return false;
     }
   }
@@ -48,7 +45,7 @@ class WeatherFactory {
       throw StateError('Test API not set');
     }
     String protocol = useHttps ? 'https' : 'http';
-    String url = '$protocol://$host:$port';
+    String url = '$protocol://$host:$port/api/v1';
     BaseOptions options = BaseOptions(baseUrl: url);
     Dio dio = Dio(options);
     return WeatherApi(dio);

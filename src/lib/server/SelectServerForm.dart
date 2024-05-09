@@ -53,13 +53,16 @@ class _SelectServerFormState extends State<SelectServerForm> {
                 SizedBox(
                   width: 105,
                   child: DropdownButtonFormField(
+                      key: const Key('protocolDropdown_serverForm'),
                       alignment: Alignment.centerLeft,
                       items: const [
                         DropdownMenuItem(
+                          key: Key('httpDropdownItem_serverForm'),
                           value: false,
                           child: Text('http'),
                         ),
                         DropdownMenuItem(
+                          key: Key('httpsDropdownItem_serverForm'),
                           value: true,
                           child: Text('https'),
                         ),
@@ -75,7 +78,9 @@ class _SelectServerFormState extends State<SelectServerForm> {
                 SizedBox(
                   width: width,
                   child: TextFormField(
+                    key: const Key('hostInput_serverForm'),
                     initialValue: _serverHost,
+                    keyboardType: TextInputType.url,
                     decoration: const InputDecoration(
                       hintText: 'Enter host',
                     ),
@@ -97,6 +102,8 @@ class _SelectServerFormState extends State<SelectServerForm> {
                 SizedBox(
                   width: 60,
                   child: TextFormField(
+                    key: const Key('portInput_serverForm'),
+                    keyboardType: TextInputType.number,
                     initialValue: _serverPort.toString(),
                     decoration: const InputDecoration(
                       hintText: 'Enter port',

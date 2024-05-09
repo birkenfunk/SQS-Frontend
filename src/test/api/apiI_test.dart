@@ -10,7 +10,7 @@ void main(){
 }
 
 void createWithHttpTest() {
-  WeatherApi result = WeatherApiI.create('localhost', 8080, false) as WeatherApi;
+  WeatherApi result = WeatherFactory.create('localhost', 8080, false) as WeatherApi;
   Dio createdDio = result.dio;
   test('Dio has correct Base URL', () {
     expect(createdDio.options.baseUrl, 'http://localhost:8080/api/v1');
@@ -18,7 +18,7 @@ void createWithHttpTest() {
 }
 
 void createWithHttpsTest() {
-  WeatherApi result = WeatherApiI.create('test.de', 9000, true) as WeatherApi;
+  WeatherApi result = WeatherFactory.create('test.de', 9000, true) as WeatherApi;
   Dio createdDio = result.dio;
   test('Dio has correct Base URL', () {
     expect(createdDio.options.baseUrl, 'https://test.de:9000/api/v1');
