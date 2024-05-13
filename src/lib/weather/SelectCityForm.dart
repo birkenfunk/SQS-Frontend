@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:src/entities/weather_dto.dart';
-import 'package:src/services/api/weather_api_i.dart';
 import 'package:src/services/providers/ApiProvider.dart';
 import 'package:src/services/providers/WeatherProvider.dart';
 
@@ -50,6 +49,7 @@ class _SelectCityFormState extends State<SelectCityForm> {
                 ),
                 const SizedBox(height: 10),
                 ElevatedButton(
+                  key: const Key('get_weather_button'),
                   onPressed: () {
                     // Validate returns true if the form is valid, or false otherwise.
                     if (_formKey.currentState!.validate()) {

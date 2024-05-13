@@ -3,17 +3,19 @@ import 'package:provider/provider.dart';
 import 'package:src/services/providers/ApiProvider.dart';
 
 class UserOptions extends StatelessWidget{
-  const UserOptions({Key? key}) : super(key: key);
+  const UserOptions({super.key});
 
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
+      key: const Key('userOptions'),
         itemBuilder: (context){
           return [
             //logout button
             PopupMenuItem(
               value: 'logout',
               child: TextButton.icon(
+                key: const Key('logout'),
                 onPressed: () => {
                   context.read<ApiProvider>().api = null,
                   Navigator.popUntil(context, (route) => route.isFirst),
