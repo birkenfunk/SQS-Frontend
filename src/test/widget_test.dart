@@ -6,10 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
-
-import 'package:src/main.dart';
 import 'package:src/services/api/weather_api_i.dart';
 import 'package:src/services/providers/ApiProvider.dart';
 import 'package:src/services/providers/WeatherProvider.dart';
