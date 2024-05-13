@@ -3,9 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-import 'package:src/server/SelectServerPage.dart';
+import 'package:src/server/select_server_page.dart';
 import 'package:src/services/api/weather_api.dart';
-import 'package:src/services/providers/ApiProvider.dart';
+import 'package:src/services/providers/api_provider.dart';
 
 import 'widget_test.mocks.dart';
 

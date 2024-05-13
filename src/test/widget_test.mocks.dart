@@ -10,8 +10,8 @@ import 'package:flutter/cupertino.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:src/entities/weather_dto.dart' as _i7;
 import 'package:src/services/api/weather_api_i.dart' as _i4;
-import 'package:src/services/providers/ApiProvider.dart' as _i3;
-import 'package:src/services/providers/WeatherProvider.dart' as _i8;
+import 'package:src/services/providers/api_provider.dart' as _i3;
+import 'package:src/services/providers/weather_provider.dart' as _i8;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

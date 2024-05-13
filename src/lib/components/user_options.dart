@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:src/services/providers/ApiProvider.dart';
+import 'package:src/services/providers/api_provider.dart';
 
 class UserOptions extends StatelessWidget{
   const UserOptions({super.key});

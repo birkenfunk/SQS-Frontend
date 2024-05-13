@@ -8,8 +8,8 @@
 import 'package:flutter/material.dart';
 import 'package:mockito/annotations.dart';
 import 'package:src/services/api/weather_api_i.dart';
-import 'package:src/services/providers/ApiProvider.dart';
-import 'package:src/services/providers/WeatherProvider.dart';
+import 'package:src/services/providers/api_provider.dart';
+import 'package:src/services/providers/weather_provider.dart';
 
 @GenerateNiceMocks([MockSpec<NavigatorObserver>(), MockSpec<ApiProvider>(), MockSpec<WeatherApiI>(), MockSpec<WeatherProvider>()])
 void main() {}

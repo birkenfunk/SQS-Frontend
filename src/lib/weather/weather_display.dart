@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:src/entities/weather_dto.dart';
-import 'package:src/services/providers/WeatherProvider.dart';
+import 'package:src/services/providers/weather_provider.dart';
 
 class WeatherDisplay extends StatefulWidget {
   const WeatherDisplay({super.key});

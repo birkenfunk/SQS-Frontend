@@ -3,12 +3,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-import 'package:src/components/UserOptions.dart';
+import 'package:src/components/user_options.dart';
 import 'package:src/entities/weather_dto.dart';
 import 'package:src/services/api/weather_api.dart';
-import 'package:src/services/providers/ApiProvider.dart';
-import 'package:src/services/providers/WeatherProvider.dart';
-import 'package:src/weather/WeatherPage.dart';
+import 'package:src/services/providers/api_provider.dart';
+import 'package:src/services/providers/weather_provider.dart';
+import 'package:src/weather/weather_page.dart';
 
 import 'widget_test.mocks.dart';
 

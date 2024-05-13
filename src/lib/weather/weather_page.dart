@@ -1,12 +1,12 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:src/components/StartScafold.dart';
-import 'package:src/components/UserOptions.dart';
+import 'package:src/components/start_scafold.dart';
+import 'package:src/components/user_options.dart';
 import 'package:src/entities/weather_dto.dart';
-import 'package:src/services/providers/WeatherProvider.dart';
-import 'package:src/weather/SelectCityForm.dart';
-import 'package:src/weather/WeatherDisplay.dart';
+import 'package:src/services/providers/weather_provider.dart';
+import 'package:src/weather/select_city_form.dart';
+import 'package:src/weather/weather_display.dart';
 
 class WeatherPage extends StatefulWidget {
   const WeatherPage({super.key});

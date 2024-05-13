@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:src/services/providers/ApiProvider.dart';
-import 'package:src/server/SelectServerPage.dart';
-import 'package:src/services/providers/WeatherProvider.dart';
-import 'package:src/weather/WeatherPage.dart';
+import 'package:src/services/providers/api_provider.dart';
+import 'package:src/server/select_server_page.dart';
+import 'package:src/services/providers/weather_provider.dart';
+import 'package:src/weather/weather_page.dart';
 
 void main() {
   runApp(const MyApp());
