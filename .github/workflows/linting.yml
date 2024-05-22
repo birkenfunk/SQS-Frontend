@@ -16,5 +16,7 @@ jobs:
                 flutter-version: 3.22.0
             - name: Switch to right dir
               run: cd ./src
+            - name: Get dependencies
+              run: flutter pub get
             - name: linting
               run: flutter analyze
