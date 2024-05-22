@@ -14,9 +14,9 @@ jobs:
               with:
                 channel: stable
                 flutter-version: 3.22.0
-            - name: Switch to right dir
-              run: cd ./src
             - name: Get dependencies
               run: flutter pub get
+              working-directory: ./src
             - name: linting
               run: flutter analyze
+              working-directory: ./src
