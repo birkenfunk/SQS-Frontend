@@ -142,12 +142,15 @@ jobs:
               echo "::set-env name=TAG_NAME::${GITHUB_REF#refs/heads/}_latest"
               echo "No tag found"
             fi
+            if [[ ${{ github.ref }} == refs/heads/dependabot/* ]]; then
+              echo "::set-env name=DEPENDABOT::true"
+            fi
         - name: zip linux build
           run: zip -r linuxBuild.zip linuxBuild
         - name: zip web build
           run: zip -r webBuild.zip webBuild
         - name: Publish branch_latest release not on tags
-          if: env.IS_TAG == 'false'
+          if: env.IS_TAG == 'false' && env.DEPENDABOT == 'false'
           uses: softprops/action-gh-release@v2
           with:
             tag_name: ${{ env.TAG_NAME }}
@@ -158,7 +161,7 @@ jobs:
               linuxBuild.zip
               webBuild.zip
         - name: Publish tag release
-          if: env.IS_TAG == 'true'
+          if: env.IS_TAG == 'true' && env.DEPENDABOT == 'false'
           uses: softprops/action-gh-release@v2
           with:
             tag_name: ${{github.ref_name}}
