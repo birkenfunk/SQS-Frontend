@@ -29,5 +29,6 @@ setup_integration_test:
 get_package:
 	flutter pub get
 
+build_all: build_android build_linux build_web
 
-.PHONY: test integration_test_linux build_linux run_linux build_web run_web build_android clean setup_integration_test
+.PHONY: test integration_test_linux build_linux run_linux build_web run_web build_android clean setup_integration_test build_all
