@@ -130,4 +130,40 @@ jobs:
           uses: actions/checkout@v4
         - name: Download Builds
           uses: actions/download-artifact@v4
-        - run: ls -la
+        - name: Check if tag is pushed
+          env:
+            ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+          run: |
+            if [[ ${{ github.ref }} == refs/tags/v* ]]; then
+              echo "::set-env name=IS_TAG::true"
+              echo "Tag found"
+            else
+              echo "::set-env name=IS_TAG::false"
+              echo "::set-env name=TAG_NAME::${GITHUB_REF#refs/heads/}_latest"
+              echo "No tag found"
+            fi
+        - name: zip linux build
+          run: zip -r linuxBuild.zip linuxBuild
+        - name: zip web build
+          run: zip -r webBuild.zip webBuild
+        - name: Publish branch_latest release not on tags
+          if: env.IS_TAG == 'false'
+          uses: softprops/action-gh-release@v2
+          with:
+            tag_name: ${{ env.TAG_NAME }}
+            prerelease: true
+            name: "Pre-release for ${{env.TAG_NAME}}"
+            files: |
+              androidBuild/app-release.apk
+              linuxBuild.zip
+              webBuild.zip
+        - name: Publish tag release
+          if: env.IS_TAG == 'true'
+          uses: softprops/action-gh-release@v2
+          with:
+            tag_name: ${{github.ref_name}}
+            name: "Release for ${{github.ref_name}}"
+            files: |
+              androidBuild/app-release.apk
+              linuxBuild.zip
+              webBuild.zip
