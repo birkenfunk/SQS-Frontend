@@ -67,7 +67,7 @@ jobs:
               run: make build_linux
               working-directory: ./src
             - name: Upload linux build
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v5
               with:
                 name: linuxBuild
                 path: src/build/linux/x64/release/bundle
@@ -91,7 +91,7 @@ jobs:
               run: make build_web
               working-directory: ./src
             - name: Upload web build
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v5
               with:
                 name: webBuild
                 path: src/build/web
@@ -115,7 +115,7 @@ jobs:
               run: make build_android
               working-directory: ./src
             - name: Upload adroid build
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v5
               with:
                 name: androidBuild
                 path: src/build/app/outputs/flutter-apk/app-release.apk
